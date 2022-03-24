@@ -1,5 +1,3 @@
-Primer versión:
-
 <lenguaje_de_programacion> ::= <conjunto_instrucciones>
 
 <conjunto_instrucciones> ::= <declaracion><sentencia>|<conjunto_instrucciones>
@@ -29,8 +27,40 @@ Primer versión:
 
 <caracter> ::= <letra>|<entero>|<decimal>|<caracter><letra>|<caracter><letra>|<caracter><entero>|<caracter><decimal>
 
-<operador_aritmetico> ::= '+'|'-'|'*'|'/'|'%'
+<aritmeticos> ::= '+'|'-'|'*'|'/'|'%'
 
-<operador_relacional> ::= '>'|'<'|'>='|'<='|'=='|'!='
+<comparacion> ::= '>'|'<'|'>='|'<='|'=='|'!='
 
 <operador_logico> ::= '&&'|'||'|'!'
+
+<asignacion> ::= <identificador>'='<expresion_matematica>|<identificador>'='<cadena>|<identificador>'='<entero>|<identificador>'='<decimal>
+
+<expresion_matematica> ::= <entero><aritmeticos><entero>|<decimal><aritmeticos><decimal>|<entero><aritmeticos><decimal>|<decimal><aritmeticos><entero>|<expresion_matematica><entero><aritmeticos><entero>|<expresion_matematica><decimal><aritmeticos><decimal>|<expresion_matematica><entero><aritmeticos><decimal>|<expresion_matematica><decimal><aritmeticos><entero>
+
+<condicion> ::= <condicion_expmath>|<condicion_identificador>|<condicion_entero>|<condicion_decimal>|<condicion_expmath><operador_logico><condicion>|<condicion_identificador><operador_logico>|<condicion>|<condicion_entero><operador_logico><condicion>|<condicion_cadena><operador_logico><condicion>|<condicion_decimal><operador_logico><condicion>
+
+<condicion_expmath> ::= <identificador><comparacion><expresion_matematica>
+
+<condicion_identificador> ::= <identificador><comparacion><identificador>
+
+<condicion_entero> ::= <identificador><comparacion><entero>
+
+<condicion_cadena> ::= <identificador><comparacion><cadena>
+
+<condicion_decimal> ::= <identificador><comparacion><decimal>
+
+<seleccion> ::= 'si ('<condicion>') hacer '<sentencia>' finsi'|'si ('<condicion>') hacer '<sentencia>' sino '<sentencia>' finsi'
+
+<ciclo_mientras> ::= 'mientras ('<condicion>')'<sentencias>'repetir'
+
+<ciclo_repetir> ::= 'repetir '<sentencias>' hasta ('<condicion>')'
+
+<sentencia> ::= <declaracion>|<asignacion>|expresion_matematica>|<bloque>|lectura|impresion|puntero|<sentencia><declaracion>|<sentencia><asignacion>|<sentencia><expresion_matematica>|<sentencia><bloque>|<sentencia><lectura>|<sentencia><impresion>|<sentencia><puntero>
+
+<bloque> ::= <seleccion>|<ciclo_mientras>|<ciclo_repetir>
+
+<lectura> ::= 'leer '<identificador>
+
+<impresion> ::= 'imprimir '<identificador>|'imprimir '<cadena>
+
+<punto> ::= <entero>'.'<entero>
